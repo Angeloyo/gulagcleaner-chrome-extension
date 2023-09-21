@@ -24,20 +24,7 @@ body {
   box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
   
 }
-.mensaje{
-  margin-top: 1em;
-  text-align: center;
-}
-.container2 {
-  background-color: #ffffff;
-  width: 90%;
-  max-width: 34.37em;
-  position: bottom;
-  margin: auto;
-  padding: 1.25em 3.12em ;
-  border-radius: 0.43em;
-  box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
-}
+
 input[type="file"] {
   display: none;
 }
@@ -149,10 +136,7 @@ button:hover span:not(:nth-child(6)) {
   color: rgb(129, 129, 129);
   margin-bottom: 10px;
 }
-.pacienciamsg{
-  color: black;
-  margin-bottom: 10px;
-}
+
 /* ------------------------------------------------------- */
 /* Loading animation MIT License: https://uiverse.io/abrahamcalsin/serious-turkey-52 */
 .dot-spinner {

@@ -7,11 +7,9 @@ let saveButtonDiv = document.getElementById("save-button-div");
 let errormsg = document.getElementById("id-errormsg");
 let errormsg2 = document.getElementById("id-errormsg2");
 let infomsg = document.getElementById("info-msg");
-let pacienciamsg = document.getElementById("paciencia-msg");
 
 saveButton.style.visibility = 'hidden';
 loading.style.visibility = 'hidden';
-pacienciamsg.style.visibility = 'hidden';
 
 function verificarPDF(file) {
   var extension = file.name.split('.').pop().toLowerCase();
@@ -52,7 +50,6 @@ fileInput.addEventListener('change', async function () {
 async function removeAds(files) {
 
   loading.style.visibility = 'visible';
-  pacienciamsg.style.visibility = 'visible';
 
   window.cleaned = []
 
@@ -96,7 +93,6 @@ async function removeAds(files) {
 
   loading.style.visibility = 'hidden';
   infomsg.textContent = ""
-  pacienciamsg.style.visibility = 'hidden';
 
   downloadFile();
 }
