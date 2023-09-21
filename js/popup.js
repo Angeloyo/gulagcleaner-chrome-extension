@@ -35,9 +35,7 @@ fileInput.addEventListener('change', async function () {
     errormsg2.textContent = "";
     numFiles += files.length;
     numOfFiles.textContent = `${numFiles} Archivos seleccionados`;
-    // if (numFiles > 1){
-    //   divzip.style.visibility = 'visible'
-    // }
+
     for (let i = 0; i < files.length; i++) {
         const reader = new FileReader();
         reader.onload = async function (event) {
@@ -60,15 +58,11 @@ fileInput.addEventListener('change', async function () {
 });
 
 async function removeAds(files) {
-  // let checked = false;
-  // if (numFiles > 1) {
-  //   checked = cbx.checked;
-  // }
+
   loading.style.visibility = 'visible';
   pacienciamsg.style.visibility = 'visible';
 
   window.cleaned = []
-
 
   const processFile = async (file) => {
     if (!verificarPDF(file)) {
@@ -103,64 +97,18 @@ async function removeAds(files) {
     //We add the cleaned pdf to the array
     window.cleaned.push([cleaned_pdf, file.name])
 
-    // const formData = new FormData();
-    // formData.append("file", file);
-    // try {
-    //   //https://shrouded-shelf-55195.herokuapp.com/upload
-    //   // https://infinite-journey-17186.herokuapp.com/upload
-    //   //http://localhost:5000/upload
-    //   const response = await fetch("https://infinite-journey-17186.herokuapp.com/upload", {
-    //     method: "POST",
-    //     body: formData,
-    //   });
-    //   if (response.ok) {
-    //     const blob = await response.blob();
-    //     let fileName = file.name;
-    //     const extension = fileName.split(".").pop();
-    //     const name = fileName.split(".").shift();
-    //     const newFileName = name + "_limpiapuntes." + extension;
-    //     if (numFiles > 1 && checked) {
-    //       zip.file(newFileName, blob);
-    //     } else {
-    //       const url = URL.createObjectURL(blob);
-    //       await downloadFile(newFileName, url);
-    //     }
-    //   } else {
-    //     const contentType = response.headers.get("Content-Type");
-    //     if (contentType.includes("application/json")) {
-    //       const responseData = await response.json();
-    //       errormsg3.textContent = responseData.Error;
-    //     }
-    //   }
-    // } catch (error) {
-    //   errormsg2.textContent = "Parece que no tienes conexión a internet o el servidor no funciona correctamente.";
-    //   console.log(error);
-    // }
   };
   const filesArray = Array.from(files);
   for (const file of filesArray) {
     await processFile(file);
   }
-  // if (checked) {
-  //   zip.generateAsync({ type: "blob" }).then(function (content) {
-  //     const url_zip = URL.createObjectURL(content);
-  //     downloadFile("procesados_limpiapuntes.zip", url_zip);
-  //   });
-  // }
+
   loading.style.visibility = 'hidden';
   infomsg.textContent = ""
   pacienciamsg.style.visibility = 'hidden';
 
   downloadFile();
 }
-
-// async function downloadFile(d_fileName, d_url) {
-//   chrome.downloads.download({
-//       url: d_url,
-//       filename: d_fileName,
-//       saveAs: false
-//   });
-// }
 
 //Function that downloads all of the files in the window.cleaned array, either as a zip or as a single file.
 async function downloadFile() {
