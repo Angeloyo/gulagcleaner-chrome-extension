@@ -6,19 +6,12 @@ let loading = document.getElementById("loading");
 let saveButtonDiv = document.getElementById("save-button-div");
 let errormsg = document.getElementById("id-errormsg");
 let errormsg2 = document.getElementById("id-errormsg2");
-let errormsg3 = document.getElementById("id-errormsg3");
-// let divzip = document.getElementById("div_zip");
-let cbx = document.getElementById("cbx");
-let msg = document.getElementById("id-msg");
 let infomsg = document.getElementById("info-msg");
 let pacienciamsg = document.getElementById("paciencia-msg");
 
 saveButton.style.visibility = 'hidden';
 loading.style.visibility = 'hidden';
 pacienciamsg.style.visibility = 'hidden';
-
-let numFiles = 0;
-const zip = new JSZip();
 
 function verificarPDF(file) {
   var extension = file.name.split('.').pop().toLowerCase();
@@ -33,8 +26,7 @@ fileInput.addEventListener('change', async function () {
     let files = this.files;
     errormsg.textContent = "";
     errormsg2.textContent = "";
-    numFiles += files.length;
-    numOfFiles.textContent = `${numFiles} Archivos seleccionados`;
+    numOfFiles.textContent = `${files.length} Archivos seleccionados`;
 
     for (let i = 0; i < files.length; i++) {
         const reader = new FileReader();
@@ -67,7 +59,6 @@ async function removeAds(files) {
   const processFile = async (file) => {
     if (!verificarPDF(file)) {
       errormsg.textContent = 'Alguno de los archivos seleccionados no tiene extensión .pdf';
-      numFiles--;
       return;
     }
     const reader = new FileReader();
@@ -81,17 +72,17 @@ async function removeAds(files) {
     data = new Uint8Array(reader.result)
 
     //We decrypt the pdf 
-    decrypted_pdf = await window.decrypt_pdf(data)
+    decrypted_pdf = await window.decrypt_pdf(data);
     if (decrypt_pdf == null) {
-        change_to_error_page()
-        return
+      errormsg2.textContent = 'Vaya, ha ocurrido un error.';
+      return;
     }
 
     //We clean the pdf 
-    cleaned_pdf = await window.clean_pdf(decrypted_pdf)
+    cleaned_pdf = await window.clean_pdf(decrypted_pdf);
     if (cleaned_pdf == null) {
-        change_to_error_page()
-        return
+      errormsg2.textContent = 'Vaya, ha ocurrido un error.';
+      return;
     }
 
     //We add the cleaned pdf to the array
@@ -128,13 +119,13 @@ async function downloadFile() {
           zip.file(window.cleaned[i][1].slice(0, -4) + "-gulag-free.pdf", bytes);
       }
       zip.generateAsync({
-              type: "blob"
-          })
-          .then(function(content) {
-              var link = document.createElement('a');
-              link.href = window.URL.createObjectURL(content);
-              link.download = "PDFs-gulag-free.zip";
-              link.click();
-          });
+          type: "blob"
+      })
+      .then(function(content) {
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(content);
+          link.download = "PDFs-gulag-free.zip";
+          link.click();
+      });
   }
 }
