@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiapuntes Chrome Extension</title>
+    <link href="./css/popup.css" rel="stylesheet" type="text/css" />
+    <script src="./js/jszip.min.js"></script>
+</head>
+<body>
+    <img class="banner" src="./img/banner.png" alt="banner">
+    <h3 id="id-msg" class="mensaje"></h3>
+    <div class="container">
+        <input accept="application/pdf" type="file" id="file-input" multiple />
+        <label class="label_select" for="file-input">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            &nbsp; Elige archivos para quitar publicidad
+        </label>
+        <div id="num-of-files">Ningún archivo elegido</div>
+        <ul id="files-list"></ul>
+    </div>
+    <div id="save-button-div" class="save-button-div-c">
+        <p id="id-errormsg" class="errormsg"></p>
+        <p id="id-errormsg2" class="errormsg"></p>
+        <p id="id-errormsg3" class="errormsg"></p>
+        <p id="info-msg" class="infomsg"></p>
+        <!-- <div id="div_zip" class="cntr vis-hidden">
+            <input type="checkbox" id="cbx" class="hidden-xs-up">
+            <label for="cbx" class="cbx"></label>
+            <span>Descargar como .zip</span>
+        </div> -->
+        <div class="conta-load">
+            <div id="loading" class="dot-spinner">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            </div>
+        </div>
+        <p id="paciencia-msg" class="pacienciamsg">¡Paciencia! No cierres la extensión hasta que hayamos acabado.</p>
+        <button id="save-button">
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span class="circle4"></span>
+            <span class="circle5"></span>
+            <span class="text">Descargar!</span>
+        </button>
+    </div>
+    <!-- Script -->
+    <script src="./js/popup.js"></script>
+    <script src="./js/gulag_functions.js" type="text/javascript"></script>
+    <script src="./js/wasm_functions.js" type="module"></script>
+</body>
+</html>

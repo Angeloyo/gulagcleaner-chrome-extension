@@ -1,0 +1,327 @@
+/* https://codingartistweb.com/2022/11/custom-file-upload-button/ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+}
+body {
+  /* background-color: #d0ccf5; */
+  background-color: #e2edff;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 40px;
+}
+.container {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 34.37em;
+  position: relative;
+  margin: 3.12em auto;
+  margin-top: 1.6em;
+  padding: 3.12em 1.25em;
+  border-radius: 0.43em;
+  box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
+  
+}
+.mensaje{
+  margin-top: 1em;
+  text-align: center;
+}
+.container2 {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 34.37em;
+  position: bottom;
+  margin: auto;
+  padding: 1.25em 3.12em ;
+  border-radius: 0.43em;
+  box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
+}
+input[type="file"] {
+  display: none;
+}
+.label_select {
+  display: block;
+  position: relative;
+  /* background-color: #ff6a9b; */
+  background-color: #024fff;
+  color: #ffffff;
+  font-size: 1.12em;
+  font-weight: 500;
+  text-align: center;
+  width: 18.75em;
+  padding: 1.12em 0;
+  margin: auto;
+  border-radius: 0.31em;
+  cursor: pointer;
+}
+#num-of-files {
+  font-weight: 400;
+  text-align: center;
+  margin: 1.25em 0 1.87em 0;
+}
+ul {
+  list-style-type: none;
+}
+.container li {
+  font-weight: 500;
+  background-color: #e2edff;
+  color: #024fff;
+  margin-bottom: 1em;
+  padding: 1.1em 1em;
+  border-radius: 0.3em;
+  display: flex;
+  justify-content: space-between;
+}
+.banner{
+  margin-top: 2rem;
+  margin-left: 4rem;
+  width: auto;
+  height: 2.7rem;
+}
+/* ------------------------------------------------------ */
+/* Button CSS Mit License: https://uiverse.io/KINGFRESS/purple-kangaroo-17 */
+button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  padding: 1em 2em;
+  border: none;
+  border-radius: .6rem;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0.75em 2.18em rgb(1, 28, 71, 0.3);
+  margin-bottom: 50px;
+}
+button span:not(:nth-child(6)) {
+  position: absolute;
+  left: 45%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  height: 28px;
+  width: 35px;
+  /* background-color: #e2edff; */
+  background-color: #024fff;
+  border-radius: 50%;
+  transition: .6s ease;
+}
+button span:nth-child(6) {
+  position: relative;
+}
+button span:nth-child(1) {
+  transform: translate(-3.3em, -4em);
+}
+button span:nth-child(2) {
+  transform: translate(-6em, 1.3em);
+}
+button span:nth-child(3) {
+  transform: translate(-.2em, 1.8em);
+}
+button span:nth-child(4) {
+  transform: translate(3.5em, 1.4em);
+}
+button span:nth-child(5) {
+  transform: translate(3.5em, -3.8em);
+}
+button:hover span:not(:nth-child(6)) {
+  transform: translate(-50%, -50%) scale(4);
+  transition: 1.5s ease;
+}
+/* End button CSS ---------------------------------------- */
+.save-button-div-c{
+  text-align: center;
+}
+.conta-load{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.errormsg{
+  text-align: center;
+  color: rgb(177, 39, 39);
+  margin-bottom: 10px;
+}
+.infomsg{
+  text-align: center;
+  color: rgb(129, 129, 129);
+  margin-bottom: 10px;
+}
+.pacienciamsg{
+  color: black;
+  margin-bottom: 10px;
+}
+/* ------------------------------------------------------- */
+/* Loading animation MIT License: https://uiverse.io/abrahamcalsin/serious-turkey-52 */
+.dot-spinner {
+  --uib-size: 2.8rem;
+  --uib-speed: .9s;
+  --uib-color: #183153;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--uib-size);
+  width: var(--uib-size);
+}
+.dot-spinner__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+.dot-spinner__dot::before {
+  content: '';
+  height: 20%;
+  width: 20%;
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  transform: scale(0);
+  opacity: 0.5;
+  animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+}
+.dot-spinner__dot:nth-child(2) {
+  transform: rotate(45deg);
+}
+.dot-spinner__dot:nth-child(2)::before {
+  animation-delay: calc(var(--uib-speed) * -0.875);
+}
+.dot-spinner__dot:nth-child(3) {
+  transform: rotate(90deg);
+}
+.dot-spinner__dot:nth-child(3)::before {
+  animation-delay: calc(var(--uib-speed) * -0.75);
+}
+.dot-spinner__dot:nth-child(4) {
+  transform: rotate(135deg);
+}
+.dot-spinner__dot:nth-child(4)::before {
+  animation-delay: calc(var(--uib-speed) * -0.625);
+}
+.dot-spinner__dot:nth-child(5) {
+  transform: rotate(180deg);
+}
+.dot-spinner__dot:nth-child(5)::before {
+  animation-delay: calc(var(--uib-speed) * -0.5);
+}
+.dot-spinner__dot:nth-child(6) {
+  transform: rotate(225deg);
+}
+.dot-spinner__dot:nth-child(6)::before {
+  animation-delay: calc(var(--uib-speed) * -0.375);
+}
+.dot-spinner__dot:nth-child(7) {
+  transform: rotate(270deg);
+}
+.dot-spinner__dot:nth-child(7)::before {
+  animation-delay: calc(var(--uib-speed) * -0.25);
+}
+.dot-spinner__dot:nth-child(8) {
+  transform: rotate(315deg);
+}
+.dot-spinner__dot:nth-child(8)::before {
+  animation-delay: calc(var(--uib-speed) * -0.125);
+}
+@keyframes pulse0112 {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* End loading animation --------------------------------- */
+/* CheckBox CSS ---------------------------------------- */
+/* Mit License: https://uiverse.io/cssbuttons-io/short-shrimp-54 */
+.cbx {
+  position: relative;
+  top: 1px;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #c8ccd4;
+  background-color: white;
+  border-radius: 3px;
+  transition: background 0.1s ease;
+  cursor: pointer;
+  display: block;
+ }
+ .cbx:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  width: 7px;
+  height: 14px;
+  opacity: 0;
+  transform: rotate(45deg) scale(0);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transition: all 0.3s ease;
+  transition-delay: 0.15s;
+ }
+ .lbl {
+  margin-left: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+ }
+ #cbx:checked ~ .cbx {
+  border-color: transparent;
+  /* background: #6871f1; */
+  background: #6d64d6;
+  animation: jelly 0.6s ease;
+ }
+ #cbx:checked ~ .cbx:after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+ }
+ .cntr {
+  position: relative;
+  display: flex;
+  justify-content: center;
+ }
+ @keyframes jelly {
+  from {
+   transform: scale(1, 1);
+  }
+  30% {
+   transform: scale(1.25, 0.75);
+  }
+  40% {
+   transform: scale(0.75, 1.25);
+  }
+  50% {
+   transform: scale(1.15, 0.85);
+  }
+  65% {
+   transform: scale(0.95, 1.05);
+  }
+  75% {
+   transform: scale(1.05, 0.95);
+  }
+  to {
+   transform: scale(1, 1);
+  }
+ }
+ .hidden-xs-up {
+  display: none!important;
+ }
+ .cntr span{
+  margin-left: 10px;
+  font-size: 16px;
+  text-align: center;
+ }
+  /* End CheckBox CSS -------------------------------- */
+
+  .vis-hidden{
+    visibility: hidden;
+  }

@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Gulag Cleaner Extension",
+    "version": "1.0.0",
+    "description": "Limpia tus apuntes de publicidad.",
+    "permissions": [
+        "downloads"
+    ],
+    "icons": {
+        "16": "./img/icon.png",
+        "48": "./img/icon.png",
+        "128": "./img/icon.png"
+    },
+    "action": {
+        "default_icon": {
+            "16": "./img/icon.png",
+            "24": "./img/icon.png",
+            "32": "./img/icon.png"
+        },
+        "default_title": "Gulag Cleaner Extension",
+        "default_popup": "popup.html"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; default-src 'self';"
+      }
+    
+}
