@@ -33,14 +33,15 @@ function getArrayU8FromWasm0(ptr, len) {
 }
 /**
 * @param {Uint8Array} data
+* @param {number} force_naive
 * @returns {Uint8Array}
 */
-export function process_pdf(data) {
+export function process_pdf(data, force_naive) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         const ptr0 = passArray8ToWasm0(data, wasm.__wbindgen_malloc);
         const len0 = WASM_VECTOR_LEN;
-        wasm.process_pdf(retptr, ptr0, len0);
+        wasm.process_pdf(retptr, ptr0, len0, force_naive);
         var r0 = getInt32Memory0()[retptr / 4 + 0];
         var r1 = getInt32Memory0()[retptr / 4 + 1];
         var v2 = getArrayU8FromWasm0(r0, r1).slice();
