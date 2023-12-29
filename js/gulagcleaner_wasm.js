@@ -36,16 +36,16 @@ function getArrayU8FromWasm0(ptr, len) {
 * @param {number} force_naive
 * @returns {Uint8Array}
 */
-export function process_pdf(data, force_naive) {
+export function clean_pdf(data, force_naive) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         const ptr0 = passArray8ToWasm0(data, wasm.__wbindgen_malloc);
         const len0 = WASM_VECTOR_LEN;
-        wasm.process_pdf(retptr, ptr0, len0, force_naive);
+        wasm.clean_pdf(retptr, ptr0, len0, force_naive);
         var r0 = getInt32Memory0()[retptr / 4 + 0];
         var r1 = getInt32Memory0()[retptr / 4 + 1];
         var v2 = getArrayU8FromWasm0(r0, r1).slice();
-        wasm.__wbindgen_free(r0, r1 * 1);
+        wasm.__wbindgen_free(r0, r1 * 1, 1);
         return v2;
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
@@ -124,7 +124,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('gulagcleaner_rust_bg.wasm', import.meta.url);
+        input = new URL('gulagcleaner_wasm_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

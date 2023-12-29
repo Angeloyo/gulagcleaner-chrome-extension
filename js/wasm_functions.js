@@ -28,14 +28,13 @@ window.decrypt_pdf = async function(pdffilearray) {
 
 // We load the wasm module of gulagcleaner and define the clean_pdf function
 import init, {
-    process_pdf
-} from "./gulagcleaner_rust.js";
+    clean_pdf
+} from "./gulagcleaner_wasm.js";
 init().then(() => {
     window.clean_pdf = async function(data) {
         try {
-            var cleaned_pdf = await process_pdf(data,0);
-            var method_code = cleaned_pdf[cleaned_pdf.length - 1]
-            cleaned_pdf = cleaned_pdf.slice(0, cleaned_pdf.length - 1)
+            var cleaned_pdf = await clean_pdf(data,0);
+            var method_code = 999
             var cleaning = 'Unknown'
             if (method_code == 0) {
                 cleaning = "New"};
@@ -52,9 +51,8 @@ init().then(() => {
             return cleaned_pdf
         } catch (e) {
             try {
-            var cleaned_pdf = await process_pdf(data,1);
-            var method_code = cleaned_pdf[cleaned_pdf.length - 1]
-            cleaned_pdf = cleaned_pdf.slice(0, cleaned_pdf.length - 1)
+            var cleaned_pdf = await clean_pdf(data,1);
+            var method_code = 999
             var cleaning = 'Unknown'
             if (method_code == 0) {
                 cleaning = "New"};
